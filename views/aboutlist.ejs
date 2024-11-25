@@ -7,6 +7,7 @@
       <th>성명</th>
       <th>연락처</th>
       <th>이메일</th>
+      <th>날짜</th>
       <th>문의내용</th>
       <th>삭제</th>
     </tr>
@@ -19,13 +20,14 @@
           <td><%= item.name %></td>
           <td><%= item.phone %></td>
           <td><%= item.email %></td>
+          <td><%= item.regdate %></td>
           <td><%= item.memo %></td>
           <td><a href="/aboutDelete?idx=<%=item.idx%>">삭제</a></td>
         </tr>
       <% }); %>
     <% } else { %>
       <tr>
-        <td colspan="5" style="text-align: center;">문의 내용이 없습니다.</td>
+        <td colspan="6" style="text-align: center;">문의 내용이 없습니다.</td>
       </tr>
     <% } %>
   </tbody>

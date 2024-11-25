@@ -23,21 +23,6 @@ staticPages.forEach((page) => {
   });
 });
 
-/*
-app.get('/aboutList', (req, res) => {
-  const sqls = `SELECT * FROM new_table`;
-
-  db.query(sqls, (err, results) => {
-    if (err) {
-      console.error('Error fetching data:', err);
-      return res
-        .status(500)
-        .send("<script>alert('데이터를 불러오는 중 오류가 발생했습니다.'); location.href='/';</script>");
-    }
-    res.render('aboutlist', { lists: results });
-  });
-});
-*/
 // 문의사항 목록 조회 Read
 app.get('/aboutList', async (req, res) => {
   try {
@@ -55,9 +40,8 @@ app.get('/aboutList', async (req, res) => {
 app.get('/aboutDelete', async (req, res) => {
   try {
     const idx = req.query.idx;
-
     // SQL Injection 방지를 위해 Parameterized Query 사용
-    const sql = `DELETE FROM new_table WHERE idx = ?`;
+    const sql = `DELETE FROM new_table WHERE idx = ?;`;
     const [result] = await db.query(sql, [idx]);
 
     if (result.affectedRows > 0) {
